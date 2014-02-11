@@ -9,7 +9,7 @@ sudo mrt
 
 #### Dependencies
 Bug involves the following packages.
-````
+````js
 meteor add less
 meteor add accounts-password
 meteor add accounts-ui
