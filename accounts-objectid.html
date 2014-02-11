@@ -8,6 +8,7 @@
 
 <template name="hello">
   <h1>Accounts be Broken with ObjectIds!</h1>
+  <p>To replicate the error, simply create an account, and check the server logs.  The ObjectID() will get written for the new user, but login authentication won't work, because the accounts-* packages are expecting strings.</p>
   <hr>
   <table>
     <thead>

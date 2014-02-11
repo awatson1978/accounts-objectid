@@ -1,14 +1,12 @@
+// the following doesn't work
+//Accounts = new Meteor.Collection("users", {idGeneration : 'MONGO'});
+
 if (Meteor.isClient) {
+  // a basic list of users
   Template.hello.usersList = function () {
     return Meteor.users.find();
   };
-  Template.hello.events({
-    'click input' : function () {
-      // template data, if any, is available in 'this'
-      if (typeof console !== 'undefined')
-        console.log("You pressed the button");
-    }
-  });
+  // and helpers to display the fields
   Template.userListItem.getEmail = function () {
     return this.emails[0].address;
   };
@@ -19,21 +17,22 @@ if (Meteor.isClient) {
       return '---';
     }
   };
-
+  // our users subscription
   Deps.autorun(function(){
-    Meteor.subscribe ('usersDirectory');
+    Meteor.subscribe ('users');
   });
 
 }
 
 if (Meteor.isServer) {
 
-  // we inject some users into the database
   Meteor.startup(function () {
-    Meteor.publish("usersDirectory", function () {
+    // our users publication
+    Meteor.publish("users", function () {
       return Meteor.users.find();
     });
 
+    // we inject some users into the database
     if (Meteor.users.find().count() === 0) {
       console.info('no users in database!  adding some default users');
 
