@@ -1,0 +1,37 @@
+<head>
+  <title>accounts-objectid</title>
+</head>
+
+<body>
+  {{> hello}}
+</body>
+
+<template name="hello">
+  <h1>Accounts be Broken with ObjectIds!</h1>
+  <hr>
+  <table>
+    <thead>
+      <tr class="bold">
+        <td>ID</td>
+        <td>Email</td>
+        <td>Name</td>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each usersList}}
+      {{> userListItem }}
+      {{/each}}
+    </tbody>
+  </table>
+  <hr>
+  {{ loginButtons }}
+  <!--<input type="button" value="Click" />-->
+</template>
+
+<template name="userListItem">
+  <tr class="userListItem">
+    <td class="id">{{_id}}</td>
+    <td class="email">{{ getEmail }}</td>
+    <td class="name">{{ getName }}</td>
+  </tr>
+</template>
